@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SBL — QA Engineer & Automation Specialist. Expert in Selenium, Cypress, Playwright, Postman, and JMeter. Available for remote and on-site opportunities." />
+  <meta name="keywords" content="QA Engineer, Automation Tester, Software Tester, SDET, Selenium, Cypress, Playwright, Indonesia, Remote" />
+  <meta property="og:title" content="SBL — QA Engineer & Automation Specialist" />
+  <meta property="og:description" content="Ensuring software quality through smart testing, automation, and precision." />
+  <meta property="og:type" content="website" />
+  <title>SBL — QA Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░ CURSOR ░░ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ░░ NAVBAR ░░ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">
+        <span class="logo-bracket">{</span> SL <span class="logo-bracket">}</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <a href="#contact" class="btn-hire">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ░░ HERO ░░ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-fade">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-name reveal-up">
+        Sopan<br />Bukhari<br />
+        <em>Lubis</em>
+      </h1>
+      <div class="hero-title reveal-up" style="animation-delay:.15s">
+        <span class="title-static">QA Engineer</span>
+        <span class="title-divider">|</span>
+        <span class="typing-wrap">
+          <span class="typed-text" id="typedText"></span>
+          <span class="cursor-blink">_</span>
+        </span>
+      </div>
+      <p class="hero-tagline reveal-up" style="animation-delay:.25s">
+        Ensuring software quality through<br />
+        <strong>smart testing, automation, and precision.</strong>
+      </p>
+      <div class="hero-cta reveal-up" style="animation-delay:.35s">
+        <a href="#projects" class="btn-primary">
+          <i class="fas fa-layer-group"></i> View Projects
+        </a>
+        <a href="cv-Sopan-Lubis.pdf" class="btn-secondary" download>
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <i class="fas fa-paper-plane"></i> Hire Me
+        </a>
+      </div>
+      <!-- <div class="hero-stats reveal-up" style="animation-delay:.45s">
+        <div class="stat">
+          <span class="stat-num" data-count="4">0</span>+
+          <span class="stat-label">Years Exp</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="200">0</span>+
+          <span class="stat-label">Bugs Found</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="40">0</span>+
+          <span class="stat-label">Projects Done</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-count="70">0</span>%
+          <span class="stat-label">Test Efficiency↑</span>
+        </div>
+      </div> -->
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ░░ ABOUT ░░ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal-left">
+          <div class="about-img-wrap">
+            <div class="about-img-placeholder">
+              <div class="avatar-initials">SBL</div>
+              <div class="avatar-ring ring-1"></div>
+              <div class="avatar-ring ring-2"></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content reveal-right">
+          <div class="section-eyebrow">About Me</div>
+          <h2 class="section-title">A QA mindset built<br /><em>for precision</em></h2>
+          <p class="about-bio">
+            I'm a <strong>Quality Assurance Engineer (QA)</strong> with 4 years of experience in ensuring software quality through comprehensive
+            manual and automated testing. Experienced in designing and maintaining test cases, developing automation test
+            scripts using Katalon Studio and Robot Framework, and executing UAT to ensure system readiness before release.
+            Continuously improving expertise in test automation tools including Selenium and Appium, as well as database and
+            testing best practices. Known for strong attention to detail, high self-discipline, fast learning ability, and a proactive
+            approach to quality improvement. 
+            </p>
+          <div class="about-tags">
+            <span class="tag">Manual Testing</span>
+            <span class="tag">Automation Testing</span>
+            <span class="tag">API Testing</span>
+            <span class="tag">Performance Testing</span>
+            <span class="tag">Bug Reporting</span>
+            <span class="tag">SDLC / STLC</span>
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">CI/CD Pipelines</span>
+          </div>
+          
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ SKILLS ░░ -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <div class="section-eyebrow">Technical</div>
+        <h2 class="section-title">Skills & <em>Expertise</em></h2>
+        <p class="section-subtitle">A battle-tested toolkit refined across 4+ years of quality engineering.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category reveal-up" style="animation-delay:.05s">
+          <div class="skill-cat-header">
+            <i class="fas fa-vial"></i>
+            <h3>Testing Fundamentals</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item" data-level="95">
+              <div class="skill-bar-label"><span>Manual Testing</span><span class="skill-pct">95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="88">
+              <div class="skill-bar-label"><span>Test Case Design</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="92">
+              <div class="skill-bar-label"><span>Bug Reporting</span><span class="skill-pct">92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="85">
+              <div class="skill-bar-label"><span>Agile / Scrum</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up" style="animation-delay:.1s">
+          <div class="skill-cat-header">
+            <i class="fas fa-robot"></i>
+            <h3>Automation Frameworks</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item" data-level="90">
+              <div class="skill-bar-label"><span>Robot Framework</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="85">
+              <div class="skill-bar-label"><span>Playwright</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="80">
+              <div class="skill-bar-label"><span>Cypress</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="75">
+              <div class="skill-bar-label"><span>Selenium WebDriver</span><span class="skill-pct">75%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up" style="animation-delay:.15s">
+          <div class="skill-cat-header">
+            <i class="fas fa-plug"></i>
+            <h3>API & Performance</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item" data-level="92">
+              <div class="skill-bar-label"><span>Postman</span><span class="skill-pct">92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="88">
+              <div class="skill-bar-label"><span>API Testing</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="80">
+              <div class="skill-bar-label"><span>JMeter</span><span class="skill-pct">60%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up" style="animation-delay:.2s">
+          <div class="skill-cat-header">
+            <i class="fas fa-code"></i>
+            <h3>Languages</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-item" data-level="82">
+              <div class="skill-bar-label"><span>Java</span><span class="skill-pct">72%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="78">
+              <div class="skill-bar-label"><span>Python</span><span class="skill-pct">68%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="85">
+              <div class="skill-bar-label"><span>SQL</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-level="80">
+              <div class="skill-bar-label"><span>Jenkins / CI/CD / Git</span><span class="skill-pct">60%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Icon Cloud -->
+      <div class="tech-cloud reveal-fade">
+        <div class="tech-item" title="Selenium"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt="Selenium" /><span>Selenium</span></div>   
+        <div class="tech-item" title="Cypress"><img src="https://raw.githubusercontent.com/cypress-io/cypress/develop/assets/cypress-logo-dark.png" alt="Cypress" /><span>Cypress</span></div>
+        <div class="tech-item" title="Postman"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" /><span>Postman</span></div>
+        <div class="tech-item" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" /><span>JavaScript</span></div>
+        <div class="tech-item" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /><span>Python</span></div>
+        <div class="tech-item" title="Jenkins"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins" /><span>Jenkins</span></div>
+        <div class="tech-item" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" /><span>Git</span></div>
+        <div class="tech-item" title="MySQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" /><span>SQL</span></div>
+        <div class="tech-item" title="Docker"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" /><span>Docker</span></div>
+        <div class="tech-item" title="JIRA"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="JIRA" /><span>JIRA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ EXPERIENCE ░░ -->
+  <section class="section experience" id="experience">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <div class="section-eyebrow">Career Journey</div>
+        <h2 class="section-title">Work <em>Experience</em></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="job-title">Senior QA Engineer</h3>
+                <div class="job-company"><i class="fas fa-building"></i> Lembaga Pembiayaan Ekspor Indonesia (Indonesia Eximbank)</div>
+              </div>
+              <div class="job-period">
+                <span class="period-badge current">Current</span>
+                <span>Apr 2025 — Present</span>
+              </div>
+            </div>
+            <ul class="job-desc">
+                <li>Designed and built the entire automation testing framework from scratch, including standards, structure, and implementation
+                workflow.</li>
+              <li>Architected end-to-end automation framework using Robot Framework + Python, cutting UAT time by <strong>2W to 3D</strong></li>
+              <li>Provided guidance and training to QA team members and juniors to adopt and execute automation testing effectively.</li>
+              <li>Conducted rigorous performance and stress testing on mission-critical applications prior to go-live, successfully identifying memory bottlenecks and ensuring system stability in production environments.</li>
+              <li>Played a key role in driving QA process improvements through standardization and automation initiatives.
+                </li>
+            </ul>
+            <div class="job-tags">
+              <span>Robot Framework</span><span>Python</span><span>Jmeter</span><span>Postman</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="job-title">QA Automation Engineer</h3>
+                <div class="job-company"><i class="fas fa-building"></i> PT. Bank Raya Indonesia Tbk</div>
+              </div>
+              <div class="job-period">
+                <span>Mar 2024 – Feb 2025</span>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>Developed and maintained automated testing scripts using Robot Framework for various internal and external projects, covering both web and mobile (Android & iOS) applications.</li>
+              <li>Collaborated closely with cross-functional teams (Developers, Product Managers) within a digital banking ecosystem to detect system anomalies early in the development lifecycle before reaching millions of users.</li>
+              <li>Maximized test coverage by validating critical business requirements through rigorous manual and automated test scenarios.</li>
+            </ul>
+            <div class="job-tags">
+              <span>Robot Framework</span><span>Postman</span><span>Python</span><span>JIRA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="job-title">QA Engineer</h3>
+                <div class="job-company"><i class="fas fa-building"></i> PT. XL Axiata Tbk</div>
+              </div>
+              <div class="job-period">
+                <span>Jan 2022 – Jan 2024</span>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>Executed extensive regression testing by designing automation scripts using Katalon Studio, significantly reducing manual testing time.</li>
+              <li>Analyzed software requirements and technical specifications to design optimal test scenarios for telecommunication services and daily internet data packages.</li>
+              <li>Managed the end-to-end bug tracking lifecycle and delivered comprehensive quality metric reports to executive stakeholders and management.</li>
+            </ul>
+            <div class="job-tags">
+              <span>Manual Testing</span><span>Katalon Studio</span><span>JIRA</span><span>SQL</span><span>Postman</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ PROJECTS ░░ -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header reveal-fade">
+        <div class="section-eyebrow">Portfolio</div>
+        <h2 class="section-title">Featured <em>Projects</em></h2>
+        <p class="section-subtitle">Real-world testing projects with measurable impact.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card featured reveal-up" style="animation-delay:.05s">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-flask"></i></div>
+              <div class="project-status live">Live</div>
+            </div>
+            <h3 class="project-name">SauceDemo E2E Automation Suite</h3>
+            <p class="project-desc">Comprehensive end-to-end automation framework for SauceDemo using Selenium + Java with POM design pattern. Includes data-driven testing, parallel execution, and Allure reporting.</p>
+            <div class="project-meta">
+              <div class="project-tech">
+                <span>Selenium</span><span>Java</span><span>TestNG</span><span>Allure</span><span>POM</span>
+              </div>
+              <div class="project-metrics">
+                <div class="metric"><i class="fas fa-check-circle"></i> 120+ test cases</div>
+                <div class="metric"><i class="fas fa-bolt"></i> 40% faster runs</div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="javascript:void(0)" class="btn-project-primary btn-run-demo"><i class="fas fa-play-circle"></i> Run Demo</a>
+              <a href="#" class="btn-project-ghost"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal-up" style="animation-delay:.1s">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-plug"></i></div>
+              <div class="project-status">Complete</div>
+            </div>
+            <h3 class="project-name">API Testing — E-Commerce Platform</h3>
+            <p class="project-desc">Full API test suite for an e-commerce backend covering 200+ endpoints. Automated with Postman + Newman, integrated into CI/CD with HTML reports.</p>
+            <div class="project-meta">
+              <div class="project-tech">
+                <span>Postman</span><span>Newman</span><span>JavaScript</span><span>CI/CD</span>
+              </div>
+              <div class="project-metrics">
+                <div class="metric"><i class="fas fa-check-circle"></i> 200+ endpoints tested</div>
+                <div class="metric"><i class="fas fa-shield-alt"></i> 98% pass rate</div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="javascript:void(0)" class="btn-project-primary btn-run-demo"><i class="fas fa-play-circle"></i> Run Demo</a>
+              <a href="#" class="btn-project-ghost"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal-up" style="animation-delay:.15s">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-tachometer-alt"></i></div>
+              <div class="project-status">Complete</div>
+            </div>
+            <h3 class="project-name">Performance Testing — Banking App</h3>
+            <p class="project-desc">Load and stress testing for a core banking application using JMeter. Identified bottlenecks under 10K concurrent users, resulting in 3x throughput improvement.</p>
+            <div class="project-meta">
+              <div class="project-tech">
+                <span>JMeter</span><span>Grafana</span><span>InfluxDB</span><span>Bash</span>
+              </div>
+              <div class="project-metrics">
+                <div class="metric"><i class="fas fa-users"></i> 10K concurrent users</div>
+                <div class="metric"><i class="fas fa-chart-line"></i> 3x throughput boost</div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="javascript:void(0)" class="btn-project-primary btn-run-demo"><i class="fas fa-play-circle"></i> Run Demo</a>
+              <a href="#" class="btn-project-ghost"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal-up" style="animation-delay:.2s">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon"><i class="fas fa-tree"></i></div>
+              <div class="project-status">Complete</div>
+            </div>
+            <h3 class="project-name">Cypress Component Testing Dashboard</h3>
+            <p class="project-desc">Modern Cypress test suite for React SaaS dashboard, covering component, integration, and E2E scenarios with custom commands and visual regression.</p>
+            <div class="project-meta">
+              <div class="project-tech">
+                <span>Cypress</span><span>React</span><span>TypeScript</span><span>Percy</span>
+              </div>
+              <div class="project-metrics">
+                <div class="metric"><i class="fas fa-eye"></i> Visual regression</div>
+                <div class="metric"><i class="fas fa-layer-group"></i> 80+ components</div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="javascript:void(0)" class="btn-project-primary btn-run-demo"><i class="fas fa-play-circle"></i> Run Demo</a>
+              <a href="#" class="btn-project-ghost"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  
+
+  <!-- ░░ CONTACT ░░ -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="section-eyebrow">Get In Touch</div>
+          <h2 class="section-title">Let's work<br /><em>together</em></h2>
+          <p class="contact-desc">Open to full-time roles, contract projects, and remote opportunities.</p>
+          <div class="contact-links">
+            <a href="mailto:sopanbukhari@gmail.com" class="contact-link">
+              <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="contact-link-label">Email</div>
+                <div class="contact-link-value">sopanbukhari@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/sopanlubis" target="_blank" class="contact-link">
+              <div class="contact-link-icon"><i class="fab fa-linkedin"></i></div>
+              <div>
+                <div class="contact-link-label">LinkedIn</div>
+                <div class="contact-link-value">www.linkedin.com/in/sopanlubis</div>
+              </div>
+            </a>
+            <a href="https://github.com/sopanbukhari" target="_blank" class="contact-link">
+              <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <div class="contact-link-label">GitHub</div>
+                <div class="contact-link-value">www.github.com/sopanbukhari</div>
+              </div>
+            </a>
+            <a href="https://wa.me/6285710550416" target="_blank" class="contact-link">
+              <div class="contact-link-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <div class="contact-link-label">WhatsApp</div>
+                <div class="contact-link-value">+62 857-1055-0416</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal-right">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Job Opportunity / Project Inquiry" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about the opportunity or project..." required></textarea>
+            </div>
+            <button type="submit" class="btn-form-submit">
+              <i class="fas fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer">
+    <div class="container">
+      
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/sopanlubis" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/sopanbukhari" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:sopanbukhari@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://wa.me/6285710550416" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      
+      <div class="footer-bottom">
+        <span>© 2026 Sopan Lubis. Crafted with precision — just like my test cases.</span>
+        <span class="footer-made">Made with <i class="fas fa-heart"></i> & lots of coffee</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ░░ DEMO MODAL ░░ -->
+  <div class="demo-modal" id="demoModal">
+    <div class="demo-container">
+      <div class="demo-header">
+        <div class="demo-title">
+          <i class="fas fa-robot"></i>
+          <span>Cypress Automation Runner</span>
+        </div>
+        <button class="demo-close" id="closeDemo">&times;</button>
+      </div>
+      <div class="demo-body">
+        <div class="demo-grid">
+          <div class="demo-terminal">
+            <div class="terminal-header">terminal — cypress run</div>
+            <div class="terminal-content" id="terminalOutput">
+              <span class="t-gray">$ npx cypress run --spec "login.cy.js"</span><br>
+            </div>
+          </div>
+          <div class="demo-video-wrap">
+            <div class="video-overlay" id="videoOverlay">
+              <div class="loader"></div>
+              <span>Waiting for runner...</span>
+            </div>
+            <!-- Ganti src dengan path video hasil record cypress kamu -->
+            <video id="demoVideo" width="100%" height="100%" muted>
+              <source src="assets/videos/cypress-demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span>Message sent successfully!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
