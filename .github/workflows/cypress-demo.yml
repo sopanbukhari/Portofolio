@@ -18,7 +18,7 @@ jobs:
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --spec "login.cy.js"
+          command: npx cypress run --spec login.cy.js
 
       - name: Upload Results
         if: always()

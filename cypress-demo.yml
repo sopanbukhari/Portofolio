@@ -13,7 +13,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           # Ganti dengan perintah yang sesuai
-          command: npx cypress run --spec "login.cy.js"
+          command: npx cypress run --spec login.cy.js
 
       - name: Upload Results
         if: always()
