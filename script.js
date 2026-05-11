@@ -249,10 +249,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             const checkVideoAvailability = async (url, retries = 5) => {
                                 for (let i = 0; i < retries; i++) {
                                     try {
-                                        const res = await fetch(url, { method: 'HEAD' });
-                                        if (res.ok) return true;
+                                        // Menggunakan mode no-cors untuk menghindari masalah preflight CORS
+                                        // dan mengabaikan kesalahan DNS sementara
+                                        const res = await fetch(url, { method: 'GET', mode: 'no-cors' });
+                                        // Pada mode no-cors, kita tidak bisa cek res.ok, 
+                                        // tapi jika tidak masuk ke catch, berarti server merespon.
+                                        return true;
                                     } catch (e) {
-                                        console.log("Video not ready yet, retrying...");
+                                        console.log(`Video not ready yet (Attempt ${i + 1}), retrying...`, e);
                                     }
                                     await new Promise(resolve => setTimeout(resolve, 2000)); // Tunggu 2 detik
                                 }

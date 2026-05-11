@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+        'Authorization': `token ${GITHUB_TOKEN}`,
         'Accept': 'application/vnd.github+json',
         'User-Agent': 'Vercel-Serverless-Function'
       },
