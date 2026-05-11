@@ -232,6 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         clearInterval(checkStatus);
                         if (lastRun.conclusion === 'success') {
                             terminalOutput.innerHTML += '<div style="color:#2ea043">> Run Finished: SUCCESS. Playing Recording...</div>';
+                            
+                            // Mengambil video 'latest_demo' dari Cloudinary Anda
+                            // Ganti 'YOUR_CLOUD_NAME' dengan Cloud Name yang Anda masukkan di GitHub Secret
+                            const cloudName = "dbchkahnw"; 
+                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/latest_demo.mp4?t=${new Date().getTime()}`;
+                            demoVideo.src = videoUrl;
+                            
                             videoOverlay.style.display = 'none';
                             demoVideo.play();
                         } else {

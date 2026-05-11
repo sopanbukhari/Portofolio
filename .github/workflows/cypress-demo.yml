@@ -22,6 +22,16 @@ jobs:
           spec: login.cy.js
           browser: chrome
 
+      - name: Upload Video to Cloudinary
+        if: always()
+        run: |
+          curl https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/video/upload \
+            -X POST \
+            -F "file=@cypress/videos/login.cy.js.mp4" \
+            -F "upload_preset=${{ secrets.CLOUDINARY_UPLOAD_PRESET }}" \
+            -F "public_id=latest_demo" \
+            -F "invalidate=true"
+
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
