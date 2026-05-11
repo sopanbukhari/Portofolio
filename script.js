@@ -192,8 +192,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/trigger-demo', { method: 'POST' });
             
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || "Failed to trigger");
+                const errorText = await response.text();
+                let errorMessage = "Failed to trigger";
+                
+                try {
+                    const errorData = JSON.parse(errorText);
+                    errorMessage = errorData.error || errorMessage;
+                } catch (e) {
+                    // Jika bukan JSON, ambil potongan teks HTML error-nya
+                    errorMessage = `Server Error (${response.status}): ${errorText.substring(0, 50)}...`;
+                }
+                throw new Error(errorMessage);
             }
 
             terminalOutput.innerHTML += '<div style="color:cyan">> GitHub Action triggered successfully!</div>';

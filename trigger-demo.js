@@ -17,19 +17,18 @@ export default async function handler(req, res) {
     const response = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${GITHUB_TOKEN}`,
+        'Authorization': `token ${GITHUB_TOKEN}`,
         'Accept': 'application/vnd.github+json',
         'User-Agent': 'Vercel-Serverless-Function'
       },
-      body: JSON.stringify({ ref: 'main' }) // Ganti 'main' ke 'master' jika itu branch utama kamu
+      body: JSON.stringify({ ref: 'main' }) // Pastikan branch sesuai
     });
 
     if (response.ok) {
-      return res.status(204).end();
+      return res.status(200).json({ message: 'Success' });
     } else {
-      const errorBody = await response.text();
-      console.error(`GitHub Error: ${response.status}`, errorBody);
-      return res.status(response.status).json({ error: `GitHub API Error: ${errorBody}` });
+      const githubError = await response.text();
+      return res.status(response.status).json({ error: githubError });
     }
   } catch (error) {
     return res.status(500).json({ error: error.message });
