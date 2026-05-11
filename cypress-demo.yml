@@ -1,6 +1,6 @@
-name: Cypress Remote Demo
-on: 
-  workflow_dispatch: # Memungkinkan trigger manual via API
+name: Cypress Demo Runner
+on:
+  workflow_dispatch: # Ini wajib agar bisa dipicu via API
 
 jobs:
   cypress-run:
@@ -12,11 +12,12 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          # Ganti dengan perintah yang sesuai
           command: npx cypress run --spec "login.cy.js"
 
-      - name: Upload Video
-        uses: actions/upload-artifact@v4
+      - name: Upload Results
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos

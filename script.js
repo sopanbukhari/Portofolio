@@ -189,7 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 1. Trigger Workflow via Serverless Function
-            const response = await fetch('/api/trigger-demo', { method: 'POST' });
+            // Menggunakan path relatif agar lebih aman di berbagai environment
+            const response = await fetch('api/trigger-demo', { method: 'POST' });
             
             if (!response.ok) {
                 const errorText = await response.text();
@@ -199,8 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const errorData = JSON.parse(errorText);
                     errorMessage = errorData.error || errorMessage;
                 } catch (e) {
-                    // Jika bukan JSON, ambil potongan teks HTML error-nya
-                    errorMessage = `Server Error (${response.status}): ${errorText.substring(0, 50)}...`;
+                    // Menampilkan status jika Vercel mengembalikan HTML (404/500)
+                    errorMessage = `Server Error (${response.status}): Endpoint not found or crashed.`;
                 }
                 throw new Error(errorMessage);
             }
