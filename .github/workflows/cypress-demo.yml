@@ -30,8 +30,7 @@ jobs:
             -F "file=@cypress/videos/login.cy.js.mp4" \
             -F "upload_preset=${{ secrets.CLOUDINARY_UPLOAD_PRESET }}" \
             -F "public_id=latest_demo" \
-            -F "resource_type=video" \
-            -F "overwrite=true"
+            -F "resource_type=video"
 
       - name: Upload Results
         if: always()
