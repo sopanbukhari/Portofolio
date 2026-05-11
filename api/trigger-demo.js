@@ -19,11 +19,11 @@ export default async function handler(req, res) {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Authorization': `Bearer ${GITHUB_TOKEN}`,
         'Accept': 'application/vnd.github+json',
         'User-Agent': 'Vercel-Serverless-Function'
       },
-      body: JSON.stringify({ ref: 'main' }) // Change to 'master' if that is your default branch name
+      body: JSON.stringify({ ref: 'main' })
     });
 
     if (response.ok) {

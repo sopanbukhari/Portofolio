@@ -240,21 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             // Mengambil video 'latest_demo' dari Cloudinary Anda
                             // Ganti 'YOUR_CLOUD_NAME' dengan Cloud Name yang Anda masukkan di GitHub Secret
                             // Pastikan ini diisi Cloud Name (ID Akun), bukan nama preset.
-                            const cloudName = "dbchkahnw"; 
-                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/latest_demo.mp4?t=${Date.now()}`;
+                            const cloudName = "CLOUDINARY_CLOUD_NAME"; 
+                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/f_auto,q_auto/latest_demo.mp4?t=${Date.now()}`;
 
                             terminalOutput.innerHTML += '<div class="t-gray">> Finalizing video stream...</div>';
 
-                            // Fungsi pembantu untuk mengecek apakah video sudah benar-benar siap di Cloudinary
                             const checkVideoAvailability = async (url, retries = 5) => {
                                 for (let i = 0; i < retries; i++) {
                                     try {
-                                        // Menggunakan mode no-cors untuk menghindari masalah preflight CORS
-                                        // dan mengabaikan kesalahan DNS sementara
-                                        const res = await fetch(url, { method: 'GET', mode: 'no-cors' });
-                                        // Pada mode no-cors, kita tidak bisa cek res.ok, 
-                                        // tapi jika tidak masuk ke catch, berarti server merespon.
-                                        return true;
+                                        const res = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                                        if (res.ok) return true;
                                     } catch (e) {
                                         console.log(`Video not ready yet (Attempt ${i + 1}), retrying...`, e);
                                     }
