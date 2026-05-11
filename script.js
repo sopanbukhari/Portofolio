@@ -242,15 +242,36 @@ document.addEventListener('DOMContentLoaded', () => {
                             // Pastikan ini diisi Cloud Name (ID Akun), bukan nama preset.
                             const cloudName = "dbchkahnw"; 
                             const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/latest_demo.mp4?t=${Date.now()}`;
-                            
-                            videoOverlay.style.display = 'none';
-                            demoVideo.src = videoUrl;
-                            demoVideo.load();
-                            
-                            demoVideo.play().catch(err => {
-                                console.warn("Autoplay blocked or video not ready:", err);
-                                terminalOutput.innerHTML += '<div class="t-gray">> Video is buffering, please wait...</div>';
-                            });
+
+                            terminalOutput.innerHTML += '<div class="t-gray">> Finalizing video stream...</div>';
+
+                            // Fungsi pembantu untuk mengecek apakah video sudah benar-benar siap di Cloudinary
+                            const checkVideoAvailability = async (url, retries = 5) => {
+                                for (let i = 0; i < retries; i++) {
+                                    try {
+                                        const res = await fetch(url, { method: 'HEAD' });
+                                        if (res.ok) return true;
+                                    } catch (e) {
+                                        console.log("Video not ready yet, retrying...");
+                                    }
+                                    await new Promise(resolve => setTimeout(resolve, 2000)); // Tunggu 2 detik
+                                }
+                                return false;
+                            };
+
+                            const isReady = await checkVideoAvailability(videoUrl);
+
+                            if (isReady) {
+                                videoOverlay.style.display = 'none';
+                                demoVideo.src = videoUrl;
+                                demoVideo.load();
+                                demoVideo.play().catch(err => {
+                                    console.warn("Playback failed:", err);
+                                    terminalOutput.innerHTML += '<div style="color:orange">> Click video to play manually.</div>';
+                                });
+                            } else {
+                                terminalOutput.innerHTML += '<div style="color:#ef4444">> Error: Video processing timeout.</div>';
+                            }
                         } else {
                             terminalOutput.innerHTML += `<div style="color:#ef4444">> Run Finished: ${lastRun.conclusion ? lastRun.conclusion.toUpperCase() : 'FAILED'}</div>`;
                             clearInterval(checkStatus);
