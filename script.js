@@ -237,18 +237,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (lastRun.conclusion === 'success') {
                             terminalOutput.innerHTML += '<div style="color:#2ea043">> Run Finished: SUCCESS. Playing Recording...</div>';
                             
-                            // Mengambil video 'latest_demo' dari Cloudinary Anda
-                            // Ganti 'YOUR_CLOUD_NAME' dengan Cloud Name yang Anda masukkan di GitHub Secret
-                            // Pastikan ini diisi Cloud Name (ID Akun), bukan nama preset.
-                            const cloudName = "CLOUDINARY_CLOUD_NAME"; 
-                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/f_auto,q_auto/latest_demo.mp4?t=${Date.now()}`;
+                            // Mengambil video 'latest_demo' dari Cloudinary dbchkahnw
+                            const cloudName = "dbchkahnw"; 
+                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/latest_demo.mp4?t=${Date.now()}`;
 
                             terminalOutput.innerHTML += '<div class="t-gray">> Finalizing video stream...</div>';
 
                             const checkVideoAvailability = async (url, retries = 5) => {
                                 for (let i = 0; i < retries; i++) {
                                     try {
-                                        const res = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                                        // Menggunakan HEAD untuk validasi ketersediaan tanpa download full file
+                                        const res = await fetch(url, { method: 'HEAD' });
                                         if (res.ok) return true;
                                     } catch (e) {
                                         console.log(`Video not ready yet (Attempt ${i + 1}), retrying...`, e);
