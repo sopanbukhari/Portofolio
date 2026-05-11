@@ -28,9 +28,9 @@ jobs:
           curl https://api.cloudinary.com/v1_1/${{ secrets.CLOUDINARY_CLOUD_NAME }}/video/upload \
             -X POST \
             -F "file=@cypress/videos/login.cy.js.mp4" \
-            -F "upload_preset=${{ secrets.CLOUDINARY_UPLOAD_PRESET }}" \
+            -F "upload_preset=${{ secrets.CLOUDINARY_CLOUD_NAME }}" \
             -F "public_id=latest_demo" \
-            -F "invalidate=true"
+            -F "resource_type=video"
 
       - name: Upload Results
         if: always()
