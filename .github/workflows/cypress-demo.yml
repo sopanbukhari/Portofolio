@@ -1,0 +1,23 @@
+# This file MUST be at .github/workflows/cypress-demo.yml in your repo
+name: Cypress Demo Runner
+on:
+  workflow_dispatch: # Ini wajib agar bisa dipicu via API
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run --spec "login.cy.js"
+
+      - name: Upload Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos

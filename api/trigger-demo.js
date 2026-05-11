@@ -14,15 +14,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${encodeURIComponent(WORKFLOW_ID)}/dispatches`;
+    // WORKFLOW_ID must be the filename like 'cypress-demo.yml'
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${WORKFLOW_ID}/dispatches`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Authorization': `Bearer ${GITHUB_TOKEN}`,
         'Accept': 'application/vnd.github+json',
         'User-Agent': 'Vercel-Serverless-Function'
       },
-      body: JSON.stringify({ ref: 'main' }) // Pastikan branch default Anda adalah 'main'
+      body: JSON.stringify({ ref: 'main' }) // Change to 'master' if that is your default branch name
     });
 
     if (response.ok) {
