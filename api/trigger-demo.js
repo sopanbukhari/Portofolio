@@ -14,8 +14,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // WORKFLOW_ID must be the filename like 'cypress-demo.yml'
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${WORKFLOW_ID}/dispatches`;
+    // Using encodeURIComponent is safer for URL construction
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${encodeURIComponent(WORKFLOW_ID)}/dispatches`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {

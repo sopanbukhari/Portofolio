@@ -246,20 +246,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             const checkVideoAvailability = async (url, retries = 5) => {
                                 for (let i = 0; i < retries; i++) {
                                     try {
-                                        // Menggunakan HEAD untuk validasi ketersediaan tanpa download full file
                                         const res = await fetch(url, { method: 'HEAD' });
                                         if (res.ok) return true;
+                                        console.log(`Video not ready (Status: ${res.status}). Retrying...`);
                                     } catch (e) {
-                                        console.log(`Video not ready yet (Attempt ${i + 1}), retrying...`, e);
+                                        // Handle DNS or Network failures specifically
+                                        if (e.name === 'TypeError') {
+                                            console.error("DNS or Network error: res.cloudinary.com is unreachable.");
+                                            return "NETWORK_ERROR";
+                                        }
+                                        console.log(`Attempt ${i + 1} failed, retrying...`, e);
                                     }
-                                    await new Promise(resolve => setTimeout(resolve, 2000)); // Tunggu 2 detik
+                                    await new Promise(resolve => setTimeout(resolve, 3000)); // Increase wait to 3s
                                 }
                                 return false;
                             };
 
                             const isReady = await checkVideoAvailability(videoUrl);
 
-                            if (isReady) {
+                            if (isReady === true) {
                                 videoOverlay.style.display = 'none';
                                 demoVideo.src = videoUrl;
                                 demoVideo.load();
@@ -267,6 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     console.warn("Playback failed:", err);
                                     terminalOutput.innerHTML += '<div style="color:orange">> Click video to play manually.</div>';
                                 });
+                            } else if (isReady === "NETWORK_ERROR") {
+                                terminalOutput.innerHTML += '<div style="color:#ef4444">> Network Error: Cannot reach Cloudinary. Check your DNS/VPN.</div>';
                             } else {
                                 terminalOutput.innerHTML += '<div style="color:#ef4444">> Error: Video processing timeout.</div>';
                             }
