@@ -10,7 +10,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress run
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
           command: npx cypress run --spec "login.cy.js"

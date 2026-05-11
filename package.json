@@ -1,0 +1,12 @@
+{
+  "name": "portofolio-automation",
+  "version": "1.0.0",
+  "description": "QA Portfolio Automation Suite",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^13.17.0"
+  },
+  "scripts": {
+    "test": "cypress run"
+  }
+}
