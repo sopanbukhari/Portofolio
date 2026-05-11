@@ -164,6 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const demoVideo = document.getElementById('demoVideo');
     const videoOverlay = document.getElementById('videoOverlay');
 
+    // Tambahkan kontrol klik pada video (Play/Pause/Replay)
+    demoVideo.addEventListener('click', () => {
+        if (demoVideo.paused) demoVideo.play();
+        else demoVideo.pause();
+    });
+
     if (runDemoBtns.length > 0 && demoModal) {
         runDemoBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -272,6 +278,21 @@ document.addEventListener('DOMContentLoaded', () => {
                                     console.warn("Playback failed:", err);
                                     terminalOutput.innerHTML += '<div style="color:orange">> Click video to play manually.</div>';
                                 });
+
+                                // Menangani Replay saat video selesai
+                                demoVideo.onended = () => {
+                                    const replayMsg = document.createElement('div');
+                                    replayMsg.style.color = 'cyan';
+                                    replayMsg.style.cursor = 'pointer';
+                                    replayMsg.style.marginTop = '10px';
+                                    replayMsg.innerHTML = '> [Test Recording Finished] <br>> Click here to <u>Replay Video</u>';
+                                    replayMsg.onclick = () => {
+                                        demoVideo.currentTime = 0;
+                                        demoVideo.play();
+                                    };
+                                    terminalOutput.appendChild(replayMsg);
+                                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                                };
                             } else if (isReady === "NETWORK_ERROR") {
                                 terminalOutput.innerHTML += '<div style="color:#ef4444">> Network Error: Cannot reach Cloudinary. Check your DNS/VPN.</div>';
                             } else {
