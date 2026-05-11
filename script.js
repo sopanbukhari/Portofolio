@@ -236,11 +236,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             // Mengambil video 'latest_demo' dari Cloudinary Anda
                             // Ganti 'YOUR_CLOUD_NAME' dengan Cloud Name yang Anda masukkan di GitHub Secret
                             const cloudName = "dbchkahnw"; 
-                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/q_auto,f_auto/latest_demo.mp4?t=${new Date().getTime()}`;
-                            demoVideo.src = videoUrl;
+                            const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/latest_demo.mp4?t=${Date.now()}`;
                             
                             videoOverlay.style.display = 'none';
-                            demoVideo.play();
+                            demoVideo.src = videoUrl;
+                            demoVideo.load();
+                            
+                            demoVideo.play().catch(err => {
+                                console.warn("Autoplay blocked or video not ready:", err);
+                                terminalOutput.innerHTML += '<div class="t-gray">> Video is buffering, please wait...</div>';
+                            });
                         } else {
                             terminalOutput.innerHTML += `<div style="color:#ef4444">> Run Finished: ${lastRun.conclusion ? lastRun.conclusion.toUpperCase() : 'FAILED'}</div>`;
                             clearInterval(checkStatus);
