@@ -14,11 +14,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
-      - name: Run Cypress Tests
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --spec login.cy.js
+          spec: login.cy.js
+          browser: chrome
 
       - name: Upload Results
         if: always()

@@ -7,5 +7,8 @@ module.exports = defineConfig({
     },
     specPattern: "login.cy.js",
     supportFile: false,
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    video: true,
   },
 });
