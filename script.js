@@ -211,13 +211,17 @@ document.addEventListener('DOMContentLoaded', () => {
             terminalOutput.scrollTop = terminalOutput.scrollHeight;
 
             // 2. Polling Status (setiap 5 detik)
+            let lastStatus = null;
             const checkStatus = setInterval(async () => {
                 try {
                     const statusRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/runs?workflow_id=${WORKFLOW_ID}&per_page=1`);
                     const data = await statusRes.json();
                     const lastRun = data.workflow_runs[0];
 
-                    if (!lastRun) return;
+                    if (!lastRun || lastRun.status === lastStatus) return;
+                    
+                    // Simpan status saat ini agar tidak spam di iterasi berikutnya
+                    lastStatus = lastRun.status;
 
                     // Update UI berdasarkan status GitHub
                     if (lastRun.status === 'queued') {
@@ -235,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             // Mengambil video 'latest_demo' dari Cloudinary Anda
                             // Ganti 'YOUR_CLOUD_NAME' dengan Cloud Name yang Anda masukkan di GitHub Secret
+                            // Pastikan ini diisi Cloud Name (ID Akun), bukan nama preset.
                             const cloudName = "dbchkahnw"; 
                             const videoUrl = `https://res.cloudinary.com/${cloudName}/video/upload/latest_demo.mp4?t=${Date.now()}`;
                             
