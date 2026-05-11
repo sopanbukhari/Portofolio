@@ -182,50 +182,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function startDemoSimulation() {
-        terminalOutput.innerHTML = '<span class="t-gray">Initializing GitHub Actions trigger...</span><br>';
-
-        // Memanggil Serverless Function (Proxy) kita sendiri
-        const PROXY_URL = "/.netlify/functions/trigger-demo";
-        const OWNER = "sopanbukhari"; 
+        terminalOutput.innerHTML = '<div class="t-gray">> Initializing remote trigger via Vercel...</div>';
+        const OWNER = "sopanbukhari";
         const REPO = "Portofolio";
+        const WORKFLOW_ID = "cypress-demo.yml";
 
         try {
-            const triggerResponse = await fetch(PROXY_URL, {
-                method: 'POST'
-            });
-
-            if (!triggerResponse.ok) throw new Error("Failed to trigger workflow");
-
-            terminalOutput.innerHTML += `<div style="color:cyan">> Workflow dispatched successfully!</div>`;
-            terminalOutput.innerHTML += `<div class="t-gray">> Waiting for runner to pick up the job...</div>`;
-
-            // 2. Polling status (Cek status setiap 3 detik)
-            const checkStatus = setInterval(async () => {
-                // Polling data publik tidak memerlukan token (jika repo public)
-                const statusResponse = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/runs?per_page=1`);
-                const data = await statusResponse.json();
-                const lastRun = data.workflow_runs[0];
-
-                terminalOutput.innerHTML += `<div class="t-gray">> Status: ${lastRun.status}...</div>`;
-                terminalOutput.scrollTop = terminalOutput.scrollHeight;
-
-                if (lastRun.status === 'completed') {
-                    clearInterval(checkStatus);
-                    const color = lastRun.conclusion === 'success' ? 'green' : 'red';
-                    terminalOutput.innerHTML += `<div style="color:${color}">> Finished with conclusion: ${lastRun.conclusion}</div>`;
-                    
-                    if (lastRun.conclusion === 'success') {
-                        videoOverlay.style.display = 'none';
-                        demoVideo.play();
-                    }
-                }
-            }, 3000);
-
-            // Hentikan polling jika modal ditutup
-            closeDemo.addEventListener('click', () => clearInterval(checkStatus));
+            // 1. Trigger Workflow via Serverless Function
+            const response = await fetch('/api/trigger-demo', { method: 'POST' });
             
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "Failed to trigger");
+            }
+
+            terminalOutput.innerHTML += '<div style="color:cyan">> GitHub Action triggered successfully!</div>';
+            terminalOutput.innerHTML += '<div class="t-gray">> Waiting for runner to start...</div>';
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+            // 2. Polling Status (setiap 5 detik)
+            const checkStatus = setInterval(async () => {
+                try {
+                    const statusRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/actions/runs?workflow_id=${WORKFLOW_ID}&per_page=1`);
+                    const data = await statusRes.json();
+                    const lastRun = data.workflow_runs[0];
+
+                    if (!lastRun) return;
+
+                    // Update UI berdasarkan status GitHub
+                    if (lastRun.status === 'queued') {
+                        terminalOutput.innerHTML += '<div class="t-gray">> Status: Queued in GitHub Queue...</div>';
+                    } else if (lastRun.status === 'in_progress') {
+                        terminalOutput.innerHTML += '<div style="color:yellow">> Status: In Progress (Running Cypress Tests)...</div>';
+                    }
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+
+                    // Jika selesai
+                    if (lastRun.status === 'completed') {
+                        clearInterval(checkStatus);
+                        if (lastRun.conclusion === 'success') {
+                            terminalOutput.innerHTML += '<div style="color:#2ea043">> Run Finished: SUCCESS. Playing Recording...</div>';
+                            videoOverlay.style.display = 'none';
+                            demoVideo.play();
+                        } else {
+                            terminalOutput.innerHTML += `<div style="color:#ef4444">> Run Finished: ${lastRun.conclusion ? lastRun.conclusion.toUpperCase() : 'FAILED'}</div>`;
+                            clearInterval(checkStatus);
+                        }
+                    }
+                } catch (pollError) {
+                    console.error("Polling error:", pollError);
+                }
+            }, 5000);
+
+            // Stop polling jika modal ditutup
+            closeDemo.addEventListener('click', () => clearInterval(checkStatus), { once: true });
+
         } catch (error) {
-            terminalOutput.innerHTML += `<div style="color:red">> Error: ${error.message}</div>`;
+            terminalOutput.innerHTML += `<div style="color:#ef4444">> Error: ${error.message}</div>`;
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
         }
     }
 });
